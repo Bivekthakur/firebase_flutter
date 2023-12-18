@@ -1,7 +1,22 @@
-import 'package:firebase_flutter/feature/google%20login/login_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_flutter/firebase_options.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+import 'feature/google login/google_login_page.dart';
+
+
+Future <void> main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+ try{
+   await Firebase.initializeApp(
+     options: DefaultFirebaseOptions.currentPlatform
+   );
+ } catch(e){
+   print("Error initalizing firebase: $e");
+
+ }
+
   runApp(const MyApp());
 }
 
@@ -18,9 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginPage(),
+      home:  GoogleLoginPage(),
     );
   }
 }
-
-
