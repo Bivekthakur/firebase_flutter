@@ -18,7 +18,6 @@ class LocalNotificationManager {
     requestPermission();
 
     initializePlatfrom();
-
   }
 
   ///3 a Requesting permission
@@ -46,44 +45,38 @@ class LocalNotificationManager {
   }
 
   static void initializePlatfrom() {
-
     /// 4a Initializing andriod and ios
-    InitializationSettings initializationSettings = const InitializationSettings(
+    InitializationSettings initializationSettings =
+        const InitializationSettings(
       android: AndroidInitializationSettings('drawable/logo'),
     );
-
 
     _notificationsPlugin.initialize(initializationSettings);
 
     ///5  get npotifiaction details
     getNotificationDetails(null);
-
-
   }
 
-  static Future<NotificationDetails>  getNotificationDetails(RemoteMessage? message) async {
-
-
-    notificationDetails = NotificationDetails(
-      android: await andriodNotificationDetails(message)
-    );
+  static Future<NotificationDetails> getNotificationDetails(
+      RemoteMessage? message) async {
+    notificationDetails =
+        NotificationDetails(android: await andriodNotificationDetails(message));
 
     return notificationDetails;
   }
 
-  static Future<AndroidNotificationDetails> andriodNotificationDetails(RemoteMessage? message) async {
-
-        return AndroidNotificationDetails(
-            channelId,
-            channelName,
-          channelDescription: channelDesciption,
-          importance: Importance.high,
-          priority: Priority.high,
-          fullScreenIntent: true,
-          playSound: true,
-
-          icon:  'drawable/logo',
-          channelAction: AndroidNotificationChannelAction.createIfNotExists,
-        );
+  static Future<AndroidNotificationDetails> andriodNotificationDetails(
+      RemoteMessage? message) async {
+    return AndroidNotificationDetails(
+      channelId,
+      channelName,
+      channelDescription: channelDesciption,
+      importance: Importance.high,
+      priority: Priority.high,
+      fullScreenIntent: true,
+      playSound: true,
+      icon: 'drawable/logo',
+      channelAction: AndroidNotificationChannelAction.createIfNotExists,
+    );
   }
 }

@@ -21,14 +21,14 @@ Future <void> main() async{
 
  }
 
-  initializeNotification();
+  // initializeNotification();
 
   runApp(const MyApp());
 }
 // number 1 notification
-void initializeNotification(){
-
-}
+// void initializeNotification(){
+//
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
