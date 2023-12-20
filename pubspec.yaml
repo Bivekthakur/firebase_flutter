@@ -38,6 +38,10 @@ dependencies:
   google_sign_in: ^6.1.6
   firebase_auth: ^4.15.3
   firebase_core: ^2.24.2
+  firebase_messaging: ^14.7.9
+  device_info_plus: ^9.1.1
+  flutter_local_notifications: ^16.2.0
+  permission_handler: any
   binary: ^3.0.1
   
 

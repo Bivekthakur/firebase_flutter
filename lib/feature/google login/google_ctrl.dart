@@ -3,7 +3,8 @@
 import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_flutter/profile/profile_page.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleCtrl{
@@ -25,7 +26,13 @@ class GoogleCtrl{
       log("user NAme credential: ${value.user?.displayName}"),
       log("user photo credential : ${value.user?.photoURL}"),
 
-      Navigator.push
+       Navigator.pushReplacement(
+            context,
+             MaterialPageRoute(builder: (context) => ProfilePage(
+               userEmail: value.user?.email ?? "",
+               userName: value.user?.displayName ?? "",
+               userPhotoURL: value.user?.photoURL ?? "",
+             ))),
 
     });
 
