@@ -40,9 +40,12 @@ dependencies:
   firebase_core: ^2.24.2
   firebase_messaging: ^14.7.9
   device_info_plus: ^9.1.1
+  flutter_facebook_auth: ^6.0.3
+  flutter_login_facebook: ^1.9.0
   flutter_local_notifications: ^16.2.0
   permission_handler: any
   binary: ^3.0.1
+  dio: ^5.4.0
   
 
 

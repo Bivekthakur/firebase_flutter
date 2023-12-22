@@ -1,4 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_flutter/feature/notification/handle_notifiaction.dart';
+import 'package:firebase_flutter/feature/notification/local_notifiaction_manager.dart';
 import 'package:firebase_flutter/firebase_message.dart';
 import 'package:firebase_flutter/firebase_options.dart';
 import 'package:firebase_flutter/hive_feature/app_state_page.dart';
@@ -21,14 +23,17 @@ Future <void> main() async{
 
  }
 
-  // initializeNotification();
 
   runApp(const MyApp());
 }
 // number 1 notification
-// void initializeNotification(){
-//
-// }
+void initializeNotification(context){
+LocalNotificationManager.initialize();
+HandleNotifications.handleNotifications(context);
+HandleNotifications.registerBackgroundMessageHandler();
+HandleNotifications.notificationMethods();
+
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -36,6 +41,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
+    initializeNotification(context);
+
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
